@@ -22,6 +22,9 @@ RUN addgroup -gid 1000 cerebro \
  && chown -R cerebro:cerebro /opt/cerebro/logs \
  && chown cerebro:cerebro /opt/cerebro
 
+RUN  apt-get update \
+ && apt-get install -y openjdk-17-jdk openjdk-17-jre
+
 WORKDIR /opt/cerebro
 USER cerebro
 
