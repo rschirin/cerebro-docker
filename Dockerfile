@@ -1,7 +1,7 @@
 # Used eclipse-temurin instead of openjdk due to its deprecation
 # If you want, you can use amazoncorretto (remember, it's CentOS based :D)
 # or a newer version of openjdk (> 18)
-FROM eclipse-temurin:17-jre as builder
+FROM eclipse-temurin:20-jre as builder
 
 ARG CEREBRO_VERSION=0.9.4
 
@@ -12,7 +12,7 @@ RUN  apt-get update \
   | tar xzv --strip-components 1 -C /opt/cerebro \
  && sed -i '/<appender-ref ref="FILE"\/>/d' /opt/cerebro/conf/logback.xml
 
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:20-jre
 
 COPY --from=builder /opt/cerebro /opt/cerebro
 
